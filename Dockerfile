@@ -2,8 +2,8 @@ FROM python:3.12
 
 # Core Python Script
 ADD main.py .
-ADD modules/Scryfall.py .
-ADD modules/Palworld.py .
+ADD modules/Scryfall.py ./modules/
+ADD modules/Palworld.py ./modules/
 
 
 # Python Libraries

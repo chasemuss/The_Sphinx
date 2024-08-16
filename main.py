@@ -9,7 +9,9 @@ SPHINX_ID = '<@1202626093274767400>'
 
 def get_documentation():
     with open('documentation.md', 'r') as fin:
-        return fin.read()
+        content = fin.read()
+        content = content.replace('{{ sphinx_id }}', SPHINX_ID)
+        return content
 
 
 @CLIENT.event
@@ -28,11 +30,11 @@ async def on_message(message):
     debug = True if str(message.channel) == 'bot-testing-zone' else False
 
     # Documentation
-    if message.content == SPHINX_ID:
-        message.channel.send(get_documentation())
+    if message.content.strip() == SPHINX_ID:
+        await message.channel.send(get_documentation())
     
     # Palworld
-    elif 'palworld' in str(message.channel) or debug:
+    elif 'palworld' in str(message.channel) or (debug and 'palworld' in message.content):
         response = Palworld(message)
         
         if isinstance(response, str):
@@ -42,8 +44,8 @@ async def on_message(message):
             await message.channel.send(file=response)
 
     # Magic: The Gathering
-    if '[[' in message.content and message.content.count('[[') == message.content.count(']]'):
-        card_list = Scryfall.get_mtg_card(message.content)
+    elif '[[' in message.content and message.content.count('[[') == message.content.count(']]'):
+        card_list = Scryfall.get_mtg_cards(message.content)
         next_message = []
         
         # The number of cards is more than 10, so we need to tell the requester that we are done processing
@@ -55,7 +57,8 @@ async def on_message(message):
             if len(next_message) == 10 or len(card_list) == 0:
                 await message.channel.send(files=next_message)
                 next_message = []
-            
+        
+        # Declare the query done
         if finished_processing:
             await message.channel.send('Whew, that was a lot of cards...')
 
