@@ -4,11 +4,19 @@ import os
 import requests
 from shutil import copyfileobj
 import time
+from random import random
+from math import ceil
 
 
-TOKEN = open('.credentials.txt', 'r').read().strip()
+TOKEN = open('./.credentials.txt', 'r').read().strip()
 client = discord.Client(intents=discord.Intents.all())
 sphinx_id = '<@1202626093274767400>'
+
+
+def roll_dice(num_dice: int, dice_sides: int) -> int:
+    results = [ceil(random() * dice_sides) for x in range(num_dice)]
+    results.sort()
+    return f'You rolled {num_dice}d{dice_sides} and got a {sum(results)}\nYour rolls were {', '.join([str(x) for x in results])}'
 
 
 # region [Magic Bot]
@@ -163,6 +171,10 @@ async def on_message(message):
         
         if finished_procesing:
             await message.channel.send("Whew, that was a lot of cards...")
+
+    if 'roll!' in message.content:
+        words = message.content.split(' ')
+        #TODO
         
 
     # Misc Commands

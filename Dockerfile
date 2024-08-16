@@ -17,6 +17,9 @@ ADD freddy.gif .
 ADD cringe.gif .
 ADD Palworld_Type_Chart.png .
 
+# Discord Credentials
+ADD .credentials.txt .
+
 # Update the Docker Container
 #RUN apt-get update -y
 #RUN apt-get install -y iputils-ping
