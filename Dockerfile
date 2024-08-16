@@ -2,8 +2,8 @@ FROM python:3.12
 
 # Core Python Script
 ADD main.py .
-#ADD scryfall.py .
-#ADD Palworld.py .
+ADD modules/Scryfall.py .
+ADD modules/Palworld.py .
 
 
 # Python Libraries
@@ -13,16 +13,13 @@ ADD requirements.txt .
 ADD documentation.md .
 
 # Pictures / Assets
-ADD freddy.gif .
-ADD cringe.gif .
 ADD Palworld_Type_Chart.png .
 
 # Discord Credentials
 ADD .credentials.txt .
 
 # Update the Docker Container
-#RUN apt-get update -y
-#RUN apt-get install -y iputils-ping
+RUN apt-get update -y
 
 # Install Dependencies
 RUN pip install -r requirements.txt
