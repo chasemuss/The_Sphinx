@@ -10,4 +10,3 @@ All of my commands are prefixed with a "{{ sphinx_id }}, [command]".
 ## Magic: The Gathering
 
 - "[[Scryfall Query]]" -> Returns the results of the [Scryfall](https://scryfall.com/docs/syntax) Query
-

@@ -1,22 +1,7 @@
 FROM python:3.12
 
-# Core Python Script
-ADD main.py .
-ADD modules/Scryfall.py ./modules/
-ADD modules/Palworld.py ./modules/
-
-
-# Python Libraries
-ADD requirements.txt .
-
-# Documentation
-ADD documentation.md .
-
-# Pictures / Assets
-ADD Palworld_Type_Chart.png .
-
-# Discord Credentials
-ADD .credentials.txt .
+# Copy Files
+COPY . .
 
 # Update the Docker Container
 RUN apt-get update -y

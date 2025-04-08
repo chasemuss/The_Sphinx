@@ -24,6 +24,9 @@ async def on_message(message):
     if message.author == CLIENT.user:
         return
     
+    elif "okay gamers" in message.content:
+        await message.channel.send('@everyone')
+
     elif SPHINX_ID not in message.content and '[[' not in message.content: 
         return
     
