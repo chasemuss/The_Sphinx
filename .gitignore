@@ -8,7 +8,7 @@ Old_Code/*
 *.tfstate.*.backup
 terraform.tfstate
 terraform.tfstate.backup
-#*.tfvars
+*.tfvars
 *.tfvars.json
 terraform.tfvars.json
 *.terraform.lock.hcl
