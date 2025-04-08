@@ -1,3 +1,42 @@
 .credentials.txt
 MTG_Cards/*
 Old_Code/*
+
+# Terraform-specific exclusions
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfvars.json
+terraform.tfvars
+terraform.tfvars.json
+*.terraform.lock.hcl
+.terraform/
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local environment files
+.env
+*.env
+
+# Dependency directories (if using external modules)
+modules/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# IDE-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
