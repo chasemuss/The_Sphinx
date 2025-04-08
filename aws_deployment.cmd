@@ -7,6 +7,8 @@ docker build -t the_sphinx .
 docker tag the_sphinx:latest 800723880739.dkr.ecr.us-east-2.amazonaws.com/the_sphinx:latest
 docker push 800723880739.dkr.ecr.us-east-2.amazonaws.com/the_sphinx:latest
 
+terraform destroy
 terraform init
+
 terraform plan
 terraform apply
